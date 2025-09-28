@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}iPortfolio Bootstrap Template{% endblock %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  
+  <!-- Styles -->
+  {% include 'components/_style.html' %}
+</head>
+
+<body class="{% block body_class %}index-page{% endblock %}">
+
+  <!-- Header -->
+  {% include 'components/_header.html' %}
+
+  <main class="main">
+    {% block content %}
+    <!-- Bu yerda asosiy kontent bo'ladi -->
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'components/_footer.html' %}
+
+  <!-- Scripts -->
+  {% include 'components/_script.html' %}
+
+</body>
+
+</html>
