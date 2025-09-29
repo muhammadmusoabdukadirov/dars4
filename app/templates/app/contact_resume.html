@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Kontakt — {{ resume.ism }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Kontakt: {{ resume.ism }}</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Sizning emailingiz</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email kiriting" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Mavzu</label>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Mavzuni kiriting" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Xabar</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" placeholder="Xabaringizni yozing..." required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Yuborish</button>
+                        </div><br>
+                        <div>
+                            <a href="{% url 'index' %}" class="btn mb-4" style="background-color: #ff6600; color: white;">🏠 Bosh sahifaga qaytish</a>
+                            <a href="{% url 'resume_detail' resume.pk %}" class="btn mb-4" style="background-color: #00ccff; color: black;">⬅️ Ortga qaytish</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

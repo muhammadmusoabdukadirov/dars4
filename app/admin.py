@@ -47,6 +47,3 @@ from .models import Resume
 class ResumeAdmin(admin.ModelAdmin):
     list_display = ("ism", "yosh", "telefon", "email")
     search_fields = ("ism", "email", "telefon")
-
-
-

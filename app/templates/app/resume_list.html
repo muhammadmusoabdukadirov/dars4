@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Resumelar - iPortfolio{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Resumelar ro‘yxati</h1>
+    <div class="row">
+        {% for resume in resumes %}
+            <div class="col-lg-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ resume.ism }} {{ resume.familya }}</h5>
+                        <p><strong>Email:</strong> {{ resume.email }}</p>
+                        <p><strong>Tajriba:</strong> {{ resume.tajriba|truncatewords:15 }}</p>
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            <a href="{% url 'resume_detail' resume.pk %}" class="btn btn-primary btn-sm">O‘tish</a>
+                            <a href="{% url 'resume_edit' resume.pk %}" class="btn btn-warning btn-sm">Tahrirlash</a>
+                            <a href="{% url 'resume_delete' resume.pk %}" class="btn btn-danger btn-sm">O‘chirish</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Hozircha hech qanday resume qo‘shilmagan.</p>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'resume_add' %}" class="btn btn-success btn-lg">➕ Yangi Resume qo‘shish</a>
+    </div>
+</div>
+{% endblock %}

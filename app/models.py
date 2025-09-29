@@ -33,8 +33,6 @@ class Profile(models.Model):
         return f"{self.user.username} - {self.users.title if self.users else "Kategoriya yo'q"}"
 
 
-from django.db import models
-
 class Resume(models.Model):
     ism = models.CharField(max_length=100)
     familya = models.CharField(max_length=100, blank=True, null=True)
@@ -44,14 +42,12 @@ class Resume(models.Model):
     telefon = models.CharField(max_length=20)
     email = models.EmailField()
 
-    # Tajriba
-    tajriba = models.TextField(help_text="Ish tajribangizni kiriting (markaz, oy, vazifalar)")
+    tajriba = models.TextField()
+    loyihalar = models.TextField()
 
-    # Loyihalar
-    loyihalar = models.TextField(help_text="Loyihalaringiz haqida yozing")
+    qoshimcha = models.TextField(blank=True, null=True)
 
-    # Qo‘shimcha maydon
-    qoshimcha = models.TextField(blank=True, null=True, help_text="Qo‘shimcha ma’lumot (ixtiyoriy)")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.ism} - {self.email}"
+        return f"{self.ism} {self.familya or ''}"

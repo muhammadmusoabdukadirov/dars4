@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ resume.ism }} — Resume{% endblock %}
+
+{% block content %}
+<div class="container mt-5 p-4 bg-white rounded shadow-sm">
+    <h1>{{ resume.ism }} {{ resume.familya }}</h1>
+    <p><strong>Email:</strong> {{ resume.email }}</p>
+    <p><strong>Telefon:</strong> {{ resume.telefon }}</p>
+    <p><strong>Yosh:</strong> {{ resume.yosh }}</p>
+    <p><strong>Tug‘ilgan sana:</strong> {{ resume.tugilgan_sana }}</p>
+    <p><strong>Manzil:</strong> {{ resume.manzil }}</p>
+    <p><strong>Tajriba:</strong> {{ resume.tajriba }}</p>
+    <p><strong>Loyihalar:</strong> {{ resume.loyihalar }}</p>
+    {% if resume.qoshimcha %}
+        <p><strong>Qo‘shimcha:</strong> {{ resume.qoshimcha }}</p>
+    {% endif %}
+
+    <a class="btn btn-primary mt-3" href="{% url 'contact_resume' resume.pk %}">
+        📩 Kontaktga yozish
+    </a>
+    <h1></h1>
+    <div>
+        <a href="{% url 'index' %}" class="btn mb-4" style="background-color: #ff6600; color: white;">🏠 Bosh sahifaga qaytish</a>
+    </div>
+    <!-- Resume detal sahifasi (resume_detail.html) ichida) -->
+        <a href="{% url 'resume_list' %}" class="btn btn-secondary mb-3">⬅️ Ortga qaytish</a>
+
+</div>
+{% endblock %}

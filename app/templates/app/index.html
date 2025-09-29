@@ -60,4 +60,39 @@ Doimiy o‘rganishga, yangi texnologiyalarni sinashga va kuchli loyihalar yarati
   </div>
 </section><!-- /About Section -->
 
+{#  -----------------------------  #}
+<section id="resumes" class="section">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Resumelar ro‘yxati</h1>
+    <div class="row">
+      {% for resume in resumes %}
+        <div class="col-lg-6 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{% url 'resume_detail' resume.pk %}">{{ resume.ism }}</a>
+              </h5>
+              <p><strong>Email:</strong> {{ resume.email }}</p>
+              <p><strong>Tajriba:</strong> {{ resume.tajriba }}</p>
+
+
+              {% if user.is_authenticated %}
+              <div>
+                    <a href="{% url 'resume_edit' resume.pk %}" class="btn mb-4" style="background-color:rgb(255, 159, 95); color: white;">Tahrirlash</a>
+                    <a href="{% url 'resume_delete' resume.pk %}" class="btn mb-4" style="background-color:rgb(255, 0, 0); color: white;">O‘chirish</a>
+                    <a href="{% url 'resume_detail' resume.pk %}" class="btn mb-4" style="background-color:rgb(0, 128, 255); color: white;">O‘tish</a>
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center">Hozircha hech qanday resume qo‘shilmagan.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
 {% endblock %}

@@ -112,6 +112,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -125,6 +130,23 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic qilinganda shu joyga yig
 # Media fayllar uchun
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
+
+import ssl
+import certifi
+
+ssl._create_default_https_context = ssl.create_default_context(cafile=certifi.where())
+
+
+# Email konfiguratsiyasi
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'        # Gmail ishlatamiz
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sizning.email@gmail.com'  # bu yerga o‘z emailingiz
+EMAIL_HOST_PASSWORD = 'app_password'         # Gmail App password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

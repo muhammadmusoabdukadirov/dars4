@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ view.object.ism|default:"Yangi Resume qo'shish" }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">{{ view.object.ism|default:"Yangi Resume qo'shish" }}</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">💾 Saqlash</button>
+                        <h1></h1>
+                            <div>
+                                <a href="{% url 'index' %}" class="btn mb-4" style="background-color: #ff6600; color: white;">🏠 Bosh sahifaga qaytish</a>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
